@@ -9,6 +9,7 @@
   "author": "smooth-operator",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mongoose": "^8.12.1",
     "shortid": "^2.2.17"
