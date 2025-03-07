@@ -6,7 +6,11 @@ async function handleGenerateNewUrl(req, res) {
 
   const shortId = shortid.generate();
   //   console.log("New url generated");
-  const url = await urlModel.create({ url: body.url, shortId: shortId });
+  await urlModel.create({
+    url: body.url,
+    shortId: shortId,
+    createdBy: req.user._id,
+  });
 
   return res.render("home", {
     redirectUrl: `http://localhost:8001/${shortId}`,
@@ -31,4 +35,8 @@ async function handleAnalytics(req, res) {
   return res.status(200).json({ analytics: urlEntry });
 }
 
-module.exports = { handleGenerateNewUrl, handleRedirect, handleAnalytics };
+module.exports = {
+  handleGenerateNewUrl,
+  handleRedirect,
+  handleAnalytics,
+};

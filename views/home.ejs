@@ -21,17 +21,24 @@
       <button type="submit">Submit</button>
     </form>
 
-    <table>
-      <th>S.no</th>
-      <th>Original URL</th>
-      <th>Redirect URL</th>
-      <th>Created by</th>
+    <table style="border: 1px solid black">
       <tr>
-        <td>1</td>
-        <td>Hello</td>
-        <td>hello again</td>
-        <td>hello again</td>
+        <th>S.no</th>
+        <th>Original URL</th>
+        <th>Redirect URL</th>
+        <th>Created by</th>
       </tr>
+
+      <% if (locals.urls) { %> <% urls.forEach((element,index) => { %>
+      <tr style="border: 1px solid black">
+        <td style="border: 1px solid black"><%= index + 1 %></td>
+        <td style="border: 1px solid black"><%= element.url %></td>
+        <td style="border: 1px solid black">
+          <%= `https://localhost:8001/${element.shortId}` %>
+        </td>
+        <td style="border: 1px solid black"><%= element.createdBy %></td>
+      </tr>
+      <% }) %> <% } %>
     </table>
   </body>
 </html>

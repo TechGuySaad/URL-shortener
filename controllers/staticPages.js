@@ -1,7 +1,13 @@
+const urlModel = require("../models/url");
+
 //  Renders homepage
 async function handleGetPage(req, res) {
+  if (!req.user) return res.redirect("login");
+
+  const allUrls = await urlModel.find({ createdBy: req.user._id });
+
   return res.render("home", {
-    name: "Saad",
+    urls: allUrls,
   });
 }
 
