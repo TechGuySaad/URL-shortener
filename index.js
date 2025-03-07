@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const urlRouter = require("./routes/url.js");
 const pagesRouter = require("./routes/staticPages.js");
+const userRouter = require("./routes/user");
 
 const mongooseConnect = require("./connection");
 const app = express();
@@ -20,6 +21,7 @@ mongooseConnect("mongodb://127.0.0.1:27017/url-shortener")
     console.log("error connecting to database");
   });
 app.use("/url", urlRouter);
+app.use("/user", userRouter);
 app.use("/", pagesRouter);
 
 app.listen(8001, () => console.log("started listening on port 8001"));
