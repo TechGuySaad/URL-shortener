@@ -8,14 +8,9 @@ async function handleGenerateNewUrl(req, res) {
   //   console.log("New url generated");
   const url = await urlModel.create({ url: body.url, shortId: shortId });
 
-  console.log("request was made");
   return res.render("home", {
     redirectUrl: `http://localhost:8001/${shortId}`,
   });
-  // return res.status(201).json({
-  //   status: "successfully created new url",
-  //   url: `http://localhost:8001/${shortId}`,
-  // });
 }
 
 async function handleRedirect(req, res) {

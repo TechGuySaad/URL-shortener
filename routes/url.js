@@ -8,8 +8,11 @@ const {
 
 const router = express.Router();
 
-router.route("/url").post(handleGenerateNewUrl);
-router.route("/url/analytics/:id").get(handleAnalytics);
+// Generates a new url and adds it to the database
+router.route("/").post(handleGenerateNewUrl);
+// Gets the analytics for a redirect url
+router.route("/analytics/:id").get(handleAnalytics);
+// Redirects to the url id given in the req.params.id
 router.route("/:id").get(handleRedirect);
 
 module.exports = router;
