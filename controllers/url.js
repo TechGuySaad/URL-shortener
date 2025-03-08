@@ -5,7 +5,7 @@ async function handleGenerateNewUrl(req, res) {
   const body = req.body;
 
   const shortId = shortid.generate();
-  //   console.log("New url generated");
+
   await urlModel.create({
     url: body.url,
     shortId: shortId,
@@ -18,7 +18,6 @@ async function handleGenerateNewUrl(req, res) {
 }
 
 async function handleRedirect(req, res) {
-  //   console.log("Handled Redirect");
   const id = req.params.id;
 
   const urlEntry = await urlModel.findOne({ shortId: id });

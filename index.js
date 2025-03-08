@@ -26,8 +26,8 @@ mongooseConnect("mongodb://127.0.0.1:27017/url-shortener")
   .catch(() => {
     console.log("error connecting to database");
   });
-app.use("/url", restrictToLoggedInUserOnly, urlRouter);
 app.use("/user", userRouter);
+app.use("/url", restrictToLoggedInUserOnly, urlRouter);
 app.use("/", checkAuth, pagesRouter);
 
 app.listen(8001, () => console.log("started listening on port 8001"));
